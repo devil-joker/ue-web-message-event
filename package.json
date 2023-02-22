@@ -11,7 +11,9 @@
   "scripts": {
     "dev": "rollup -w -c --bundleConfigAsCjs",
     "build": "rimraf dist/ && rollup -c --bundleConfigAsCjs",
-    "prepublish": "pnpm version && pnpm build"
+    "patchPre": "pnpm version patch && pnpm build",
+    "minorPre": "pnpm version minor && pnpm build",
+    "majorPre": "pnpm version major && pnpm build"
   },
   "keywords": [
     "postMessage",
