@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>入口</title>
+  <style>
+    #iframe-layout{
+      width: 500px;
+      height: 500px;
+      overflow: hidden;
+    }
+    .content-box{
+      font-size: 20px;
+      color: #000000;
+      display: flex;
+      align-items: center;
+    }
+    .parent-box{
+      flex: none;
+      width: 500px;
+      height: 500px;
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-box">
+    <div class="parent-box">
+      父级内容：
+      <div id="parent-html"></div>
+      <div class="parent-content">
+        <input type="text" id="parentInput">
+      </div>
+    </div>
+    <div class="child-box">
+      <iframe id="iframe-layout" src="./iframe.html" frameborder="0"></iframe>
+    </div>
+  </div>
+  <script src="../dist/index.min.js"></script>
+
+  <script>
+    const Message = new PMassageEvent();
+    const { port1, port2 } = Message;
+    const Iframe = document.querySelector('#iframe-layout');
+    const parentInput = document.querySelector('#parentInput');
+    const parentHtml = document.querySelector('#parent-html');
+
+    Iframe.addEventListener('load', () => {
+      Iframe.contentWindow.postMessage('传递数据', '*', [port1]);
+    })
+
+    parentInput.addEventListener('input', e => {
+      port2.postMessage(e.target.value);
+    })
+    port2.start();
+
+    port2.addEventListener('message', e => {
+      console.log(e.data);
+      parentHtml.innerHTML = `获取的值：${e.data}`;
+    })
+
+  </script>
+</body>
+</html>

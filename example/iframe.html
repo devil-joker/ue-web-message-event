@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iframe测试</title>
+  <style>
+    html, body{
+      width: 100%;
+      height: 100%;
+      background-color: blanchedalmond;
+      overflow: hidden;
+    }
+    .content{
+      width: 100%;
+      height: 100%;
+      color: #333;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div id="content-html"></div>
+    <input type="text" id="childInput">
+  </div>
+  <script src="../dist/child.min.js"></script>
+  <script>
+    const contentItem = document.querySelector('.content');
+    const childInput = document.querySelector('#childInput');
+    const contentHtml = document.querySelector('#content-html');
+    const PortItem = new IframePort();
+    PortItem.init().then(v => {
+      console.log(v);
+      v.addEventListener('message', e => {
+        console.log(e.data);
+        contentHtml.innerHTML = `获取的值：${e.data}`;
+      });
+
+      childInput.addEventListener('input', e => {
+        v.postMessage(e.target.value);
+      })
+    });
+
+  </script>
+</body>
+</html>
