@@ -1,7 +1,7 @@
 {
-  "name": "messageevent",
-  "version": "1.0.0",
-  "description": "页面通信",
+  "name": "ue-message-event",
+  "version": "0.0.0",
+  "description": "ue场景页面通信",
   "main": "/dist/index.umd.js",
   "module": "./dist/index.esm.js",
   "types": "./dist/types/index.d.ts",
