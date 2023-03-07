@@ -39,7 +39,7 @@
     </div>
   </div>
   <script type="module">
-    import { MassagePorter } from "../dist/index.esm.js";
+    import { MassagePorter, $eventBus } from "../dist/index.esm.js";
     const Message = new MassagePorter();
     const { port1, port2 } = Message;
     const Iframe = document.querySelector('#iframe-layout');
@@ -58,6 +58,14 @@
     port2.addEventListener('message', e => {
       console.log(e.data);
       parentHtml.innerHTML = `获取的值：${e.data}`;
+    })
+
+    setTimeout(() => {
+      $eventBus.emit('ue_message', 'type', 'message');
+    }, 2000);
+
+    $eventBus.on('ue_message', (...arg) => {
+      port2.postMessage(arg);
     })
 
   </script>
