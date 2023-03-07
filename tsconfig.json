@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "useDefineForClassFields": true,
     "module": "es2015",
     "lib": ["ES2015", "DOM"],
     "declaration": true,
-    "declarationDir": "./types",
+    "outDir": "./dist/types",
     "strict": true,
     "sourceMap": true,
     "esModuleInterop": true,
@@ -18,5 +18,5 @@
     "baseUrl": ".",
     "paths": { "@/*": ["src/*"] }
   },
-  "include": ["src/", "types/"]
+  "include": ["src/*", "types/*.ts"]
 }

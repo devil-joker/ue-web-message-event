@@ -7,8 +7,8 @@ import terser from '@rollup/plugin-terser';
 const pkg = require('./package.json');
 const libName = pkg.name;
 
-const inputFiles = ['index', 'child'];
-const libNames = {'index': 'PMassageEvent', 'child': 'IframePort'};
+const inputFiles = ['index'];
+const libNames = {'index': 'MassageEvent'};
 function outputFile(name, lib = libName) {
   return [{
     // commonjs

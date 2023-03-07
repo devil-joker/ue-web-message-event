@@ -25,8 +25,8 @@
     <div id="content-html"></div>
     <input type="text" id="childInput">
   </div>
-  <script src="../dist/child.min.js"></script>
-  <script>
+  <script type="module">
+    import { IframePort } from '../dist/index.esm.js';
     const contentItem = document.querySelector('.content');
     const childInput = document.querySelector('#childInput');
     const contentHtml = document.querySelector('#content-html');
