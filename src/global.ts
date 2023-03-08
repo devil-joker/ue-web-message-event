@@ -2,10 +2,6 @@ import $eventBus from './event';
 import initUe5 from './useUe5';
 initUe5();
 
-function global_ue_get_message(type: string): void {
-  $eventBus.emit('ue_message', type)
-}
-
 /**
  * 全局注册ue场景可触发事件
  * @param functionName ue场景触发的事件名
@@ -16,5 +12,5 @@ export default function global_ue_install(functionName: string, emitFunctionName
     $eventBus.emit(emitFunctionName, message)
   }
 }
-
-window.ue.interface.global_ue_get_message = global_ue_get_message;
+// 默认全局ue事件
+global_ue_install('global_ue_get_message', 'ue_message');
