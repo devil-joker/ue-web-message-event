@@ -20,4 +20,6 @@ export default function initUe5() {
           });
       })(ue.interface),
     (window.ue4 = ue.interface.broadcast);
+
+    window.ue = ue;
 }
