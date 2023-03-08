@@ -1,9 +1,7 @@
 import MassagePorter from './parent';
 import IframePort from './child';
 import $eventBus from './event';
-import initUe5 from './useUe5';
-import './global';
 
-initUe5();
+import global_ue_install from './global';
 
-export {MassagePorter, IframePort, $eventBus};
+export {MassagePorter, IframePort, $eventBus, global_ue_install};
