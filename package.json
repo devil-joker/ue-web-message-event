@@ -16,6 +16,9 @@
     "majorPre": "pnpm version major && pnpm build"
   },
   "keywords": [
+    "ue",
+    "ue4",
+    "ue5",
     "postMessage",
     "MessageChannel",
     "event",
