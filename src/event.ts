@@ -1,18 +1,18 @@
 class EventBus {
-  #cache: Map<string, Array<(...arg: unknown[]) => void>> = new Map();
+  #cache: Map<string, Array<(msg: string) => void>> = new Map();
 
-  on(eventName: string, callback: (...args: unknown[]) => void): void {
+  on(eventName: string, callback: (msg: string) => void): void {
     const event = this.#cache.get(eventName) || [];
     event.push(callback);
     this.#cache.set(eventName, event);
   }
 
-  emit(eventName: string, ...args: unknown[]): void {
+  emit(eventName: string, msg: string): void {
     const events = this.#cache.get(eventName) || [];
-    events.forEach(fn => fn.apply(this, args));
+    events.forEach(fn => fn.bind(this, msg));
   }
 
-  off(eventName: string, callback: (...args: unknown[]) => void): void {
+  off(eventName: string, callback: (msg: string) => void): void {
     const events = this.#cache.get(eventName) || [];
     const _events = events.filter(fn => fn !== callback);
     this.#cache.set(eventName, _events);
