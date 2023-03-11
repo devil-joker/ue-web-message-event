@@ -1,5 +1,5 @@
 let ue = window.ue;
-export default function initUe5() {
+export default function initUe() {
   'object' !== typeof ue || 'object' !== typeof ue.interface
     ? ('object' !== typeof ue && (ue = {}),
       (ue.interface = {}),

@@ -1,7 +1,7 @@
-import MassagePorter from './parent';
-import IframePort from './child';
+import MediumPort from './mediumPort';
+import ChannelPort from './channelPort';
 import $eventBus from './event';
 
-import {global_ue_install, global_ue_emit} from './global';
+import { ueWebInstall, ueWebEmit } from './global';
 
-export {MassagePorter, IframePort, $eventBus, global_ue_install, global_ue_emit};
+export { MediumPort, ChannelPort, $eventBus, ueWebInstall, ueWebEmit };

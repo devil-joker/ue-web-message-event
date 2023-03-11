@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>入口</title>
+  <style>
+    #iframe-layout{
+      width: 1000px;
+      height: 600px;
+      overflow: hidden;
+    }
+    .content-box{
+      font-size: 20px;
+      color: #000000;
+      display: flex;
+      align-items: center;
+    }
+    .parent-box{
+      flex: none;
+      width: 500px;
+      height: 500px;
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-box">
+    <div class="parent-box">
+      父级内容：
+      <div id="parent-html"></div>
+      <div class="parent-content">
+        <input type="text" id="parentInput">
+      </div>
+    </div>
+    <div class="child-box">
+      <iframe id="iframe-layout" src="http://localhost:5173/twinUe5/" frameborder="0"></iframe>
+    </div>
+  </div>
+  <script type="module">
+    import { MediumPort, $eventBus } from "../dist/index.esm.js";
+    const Iframe = document.querySelector('#iframe-layout');
+    const parentInput = document.querySelector('#parentInput');
+    const parentHtml = document.querySelector('#parent-html');
+
+    const mediumPort = new MediumPort();
+
+    mediumPort.getPort().then(port => {
+      console.log(port)
+      if (port) {
+        parentInput.addEventListener('input', e => {
+          mediumPort.set(e.target.value);
+        })
+
+
+        mediumPort.get(v => {
+          console.log(v);
+          parentHtml.innerHTML = v;
+        })
+      }
+    })
+  </script>
+</body>
+</html>

@@ -26,15 +26,15 @@ function outputFile(name, lib = libName) {
     // 注意如果是umd格式的bundle的话name属性是必须的，这时可以在script标签引入后window下会挂载该属性的变量来使用你的类库方法
     name: lib,
     file: `dist/${name}.umd.js`,
-  },
-  {
-    // 通用格式可以用于node和browser等多个场景
-    format: 'umd',
-    // 注意如果是umd格式的bundle的话name属性是必须的，这时可以在script标签引入后window下会挂载该属性的变量来使用你的类库方法
-    name: lib,
-    file: `dist/${name}.min.js`,
-    plugins: [terser()]
   }]
+  // {
+  //   // 通用格式可以用于node和browser等多个场景
+  //   format: 'umd',
+  //   // 注意如果是umd格式的bundle的话name属性是必须的，这时可以在script标签引入后window下会挂载该属性的变量来使用你的类库方法
+  //   name: lib,
+  //   file: `dist/${name}.min.js`,
+  //   plugins: [terser()]
+  // }]
 }
 
 function singleOptions(name, lib) {
@@ -48,6 +48,7 @@ function singleOptions(name, lib) {
       babel({
         exclude: ['node_modules/**']
       }),
+      terser()
     ],
   }
 }
