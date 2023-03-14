@@ -47,6 +47,6 @@ export default class MediumPort {
     }
     this.mediumPort.addEventListener("message", (v: MessageEvent) => {
       cb(v.data, v);
-    })
+    }, { once: true });
   }
 }

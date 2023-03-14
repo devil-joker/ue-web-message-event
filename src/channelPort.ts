@@ -22,10 +22,14 @@ export default class ChannelPort {
   set(data: any): void {
     this.messagePort.postMessage(data);
   }
-  // get - 通过messagePort监听message
+  // get - 通过messagePort监听message，单次触发
   get(cb: (data: any, event: MessageEvent) => void) {
     this.messagePort.addEventListener("message", (v: MessageEvent) => {
       cb(v.data, v);
-    })
+    }, { once: true })
+  };
+  // 获取port对象
+  getPort(): MessagePort {
+    return this.messagePort;
   }
 }

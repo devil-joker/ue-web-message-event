@@ -9,7 +9,7 @@ class EventBus {
 
   emit(eventName: string, msg: string): void {
     const events = this.#cache.get(eventName) || [];
-    events.forEach(fn => fn.bind(this, msg));
+    events.forEach(fn => fn.call(this, msg));
   }
 
   off(eventName: string, callback: (msg: string) => void): void {
