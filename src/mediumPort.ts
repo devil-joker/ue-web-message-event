@@ -1,13 +1,15 @@
 // 中间件媒介
 // 实际在加载iframe的页面中使用，获取来自子页面传递的port对象，来建立消息通道
+
+import { IMessagePortNull } from './type';
 export default class MediumPort {
-  mediumPort: MessagePort | null = null;
+  mediumPort: IMessagePortNull = null;
 
   constructor() {
     this.init();
   }
 
-  init(): Promise<MessagePort | null> {
+  init(): Promise<IMessagePortNull> {
     if (!window) {
       throw new Error("global window is not available，is it in web browser?");
     };
@@ -29,7 +31,7 @@ export default class MediumPort {
     })
   }
 
-  async getPort(): Promise<MessagePort | null> {
+  async getPort(): Promise<IMessagePortNull> {
     return await this.init();
   }
 

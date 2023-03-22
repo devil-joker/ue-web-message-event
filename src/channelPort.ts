@@ -1,12 +1,14 @@
 // 用于iframe嵌套的页面实例化使用，以子页面为起始，建立与父级的消息通道
+
+import { IMessagePort } from './type';
 export default class ChannelPort {
-  messagePort: MessagePort;
+  messagePort: IMessagePort;
 
   constructor() {
     this.messagePort = this.init();
   }
 
-  init(): MessagePort {
+  init(): IMessagePort {
     const {port1, port2} = new MessageChannel();
 
     if (!window || !window.parent) {
@@ -29,7 +31,7 @@ export default class ChannelPort {
     }, { once: true })
   };
   // 获取port对象
-  getPort(): MessagePort {
+  getPort(): IMessagePort {
     return this.messagePort;
   }
 }
