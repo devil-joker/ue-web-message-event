@@ -1,4 +1,4 @@
-import $eventBus from './event';
+import EventEmitter from './event';
 import initUe from './initUe';
 initUe();
 
@@ -9,7 +9,7 @@ initUe();
  */
 export function ueWebInstall(funcName: string, emitFuncName?: string): void {
   window.ue.interface[funcName] = (message: string) => {
-    $eventBus.emit(emitFuncName || funcName, message)
+    EventEmitter.emit(emitFuncName || funcName, message)
   }
 }
 /**

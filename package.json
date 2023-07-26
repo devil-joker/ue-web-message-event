@@ -15,6 +15,10 @@
     "minorPre": "pnpm version minor && pnpm build",
     "majorPre": "pnpm version major && pnpm build"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devil-joker/ue-web-message-event"
+  },
   "keywords": [
     "ue",
     "ue4",
@@ -22,7 +26,9 @@
     "postMessage",
     "MessageChannel",
     "event",
-    "emitter"
+    "emitter",
+    "Digital Twin",
+    "engine"
   ],
   "author": "wang k",
   "license": "MIT",

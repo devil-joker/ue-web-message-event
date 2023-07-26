@@ -19,6 +19,6 @@ class EventBus {
   }
 }
 
-const $eventBus = new EventBus();
+const EventEmitter = new EventBus();
 
-export default $eventBus;
+export default EventEmitter;
