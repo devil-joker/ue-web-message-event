@@ -1,6 +1,6 @@
 {
   "name": "ue-web-message-event",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "ue场景页面通信",
   "main": "/dist/index.umd.js",
   "module": "./dist/index.esm.js",
